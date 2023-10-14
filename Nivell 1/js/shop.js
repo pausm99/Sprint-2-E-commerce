@@ -114,6 +114,17 @@ function calculateTotal() {
 // Exercise 4
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+    for (const item of cart) {
+        if (item.id === 1 && item.quantity >= item.product.offer.number || item.id === 3 && item.quantity >= item.product.offer.number) {
+            const discount = item.product.offer.percent/100;
+            const price = item.product.price;
+            const quantity = item.quantity;
+            let price1 = price*quantity;
+            let price2 = price1*discount;
+            let finalPrice = price1 - price2;
+            item.subtotalWithDiscount = parseFloat(finalPrice.toFixed(2));
+        }
+    }
 }
 
 // Exercise 5
