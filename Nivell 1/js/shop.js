@@ -78,6 +78,20 @@ var total = 0;
 function buy(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cart array
+    for (const prod of products) {
+        if (prod.id === id) {
+            let index = cart.findIndex(p => p.id === id)
+            if (index != -1) {
+                //Product found, increase quantity
+                cart[index].quantity++;
+            }
+            else {
+                //Product not found, push to cart
+                cart.push({id: prod.id, product: prod, quantity: 1});
+            }
+            break;
+        }
+    }
 }
 
 // Exercise 2
