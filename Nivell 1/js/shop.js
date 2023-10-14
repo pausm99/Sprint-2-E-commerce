@@ -2,7 +2,7 @@
 var products = [
     {
         id: 1,
-        name: 'cooking oil',
+        name: 'Cooking oil',
         price: 10.5,
         type: 'grocery',
         offer: {
@@ -109,6 +109,7 @@ function calculateTotal() {
         const price = element.product.price;
         total += quantity*price;
     }
+    return total;
 }
 
 // Exercise 4
@@ -130,6 +131,28 @@ function applyPromotionsCart() {
 // Exercise 5
 function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
+    var cart_list = document.getElementById('cart_list');
+    cart_list.innerHTML = "";
+
+    for (const item of cart) {
+        var row = document.createElement('tr');
+        var itemHTML = `
+            <th scope="row">${item.product.name}</th>
+            <td>$${item.product.price}</td>
+            <td>${item.quantity}</td>
+        `;
+        if (item.subtotalWithDiscount != undefined) {
+            itemHTML += `<td>$${item.subtotalWithDiscount}</td>`;
+        }
+        else {
+            itemHTML += `<td>$${item.product.price*item.quantity}</td>`;
+        }
+        row.innerHTML = itemHTML;
+        cart_list.appendChild(row);
+    }
+
+    var totalPrice = document.getElementById('total_price');
+    totalPrice.innerText = calculateTotal();
 }
 
 
@@ -141,5 +164,6 @@ function removeFromCart(id) {
 }
 
 function open_modal() {
+    applyPromotionsCart();
     printCart();
 }
