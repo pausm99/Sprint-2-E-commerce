@@ -1,0 +1,131 @@
+$primary: #2a83be;
+$dark: #1a3a4f;
+$card-border-radius: 0.85rem;
+
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+body {
+    background-color: #f8f9fa;
+}
+
+h2 {
+    color: $primary;
+    text-transform: uppercase;
+}
+
+#navbar {
+    ul {
+        gap: 1rem;
+    }
+
+    li {
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+
+    .nav-item:hover {
+        .nav-link {
+            color: $primary;
+        }
+    }
+}
+
+header {
+    p {
+        animation: move 2s ease infinite;
+    }
+}
+
+.modal-content {
+
+    .modal-body {
+        h3 {
+            color: $primary !important;
+        }
+    }
+
+    #cart_list {
+        th, td {
+            vertical-align: middle;
+            border-top: 1px solid #dee2e6;
+            border-bottom: 1px solid #dee2e6;
+        }
+    }
+    
+    .cart-button {
+        a {
+            color: $white !important;
+            text-decoration: none;
+        }
+    }
+
+    .empty {
+        display: none !important;
+    }
+}
+
+.card {
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    padding: 1rem;
+    transition: all 200ms ease;
+}
+
+.card-img-top:hover {
+    transform: scale(1.1);
+}
+
+@keyframes move {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(5px);
+    }
+    100% {
+        transform: translateY(0px);
+      }
+}
+
+@media (min-width: 576px) {
+    .modal-body {
+        width: max-content !important;
+    }
+}
+
+@media (max-width: 575px) and (min-width: 425px) {
+    .col {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media (max-width: 424px) {
+
+    thead {
+        font-size: 0.8rem;
+    }
+    
+    #cart_list {
+        max-width: 325px;
+
+        td, th {
+            font-size: 0.75rem;
+        }
+
+        button {
+            transform: scale(0.75);
+        }
+
+        .add-button {
+            padding-right: 0;
+        }
+
+        .trash-button {
+            padding-left: 0;
+        }
+    }
+}
